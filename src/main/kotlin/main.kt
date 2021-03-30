@@ -1,22 +1,19 @@
 fun main() {
     println("Bem vindo ao Bytebank!")
 
-    val contaHugo = Conta()
-    contaHugo.tiular = "Hugo"
-    contaHugo.numero = 1000
-    contaHugo.saldo = 200.0
+
+    val contaHugo = Conta("Hugo", 1000)
+    contaHugo.deposita(200.00)
 
 
-    val contaFran = Conta()
-    contaFran.tiular = "Fran"
-    contaFran.numero = 1001
-    contaFran.saldo = 300.0
+    val contaFran = Conta("Fran", 1001)
+    contaFran.deposita(300.0)
 
-    println(contaHugo.tiular)
+    println(contaHugo.titular)
     println(contaHugo.numero)
     println(contaHugo.saldo)
 
-    println(contaFran.tiular)
+    println(contaFran.titular)
     println(contaFran.numero)
     println(contaFran.saldo)
 
@@ -45,9 +42,9 @@ fun main() {
     println(contaFran.saldo)
 
     println("Transferência da conta da Fran para a conta do Hugo.")
-    if(contaFran.transfere(100.00,contaHugo)){
+    if (contaFran.transfere(100.00, contaHugo)) {
         println("Transferência sucedida")
-    }else{
+    } else {
         println("Falha na transferência")
     }
 
@@ -55,30 +52,42 @@ fun main() {
     println(contaFran.saldo)
 }
 
+class Conta(
+    var titular: String,
+    var numero: Int
+) {
 
-class Conta {
-    var tiular = ""
-    var numero = 0
-    var saldo = 0.0
+
+    var saldo = 1.0
+        private set
+
+
+//    constructor(titular: String, numero:Int){
+//         this.titular = titular
+//            this.numero=numero
+//    }
+
 
     fun deposita(valor: Double) {
-        saldo += valor
+        this.saldo += valor
     }
 
     fun saca(valor: Double) {
-        if (saldo >= valor) {
-            saldo -= valor
+        if (valor > 0) {
+            if (saldo >= valor)
+                saldo -= valor
         }
     }
 
     fun transfere(valor: Double, destino: Conta): Boolean {
         if (saldo >= valor) {
             saldo -= valor
-            destino.saldo += valor
+            destino.deposita(valor)
             return true
         }
         return false
     }
+
 
 }
 
@@ -89,13 +98,11 @@ fun testaCopiasEReferencias() {
     println("numerox $numeroX")
     println("numeroy $numeroY")
 
-    val contaJoao = Conta()
-    contaJoao.tiular = "João"
-    var contaMaria = Conta()
-    contaMaria.tiular = "Maria"
+    val contaJoao = Conta("João", 1002)
+    var contaMaria = Conta("Maria", 1003)
 
-    println("Titular conta João: ${contaJoao.tiular}")
-    println("Titular conta Maria: ${contaMaria.tiular}")
+    println("Titular conta João: ${contaJoao.titular}")
+    println("Titular conta Maria: ${contaMaria.titular}")
 }
 
 
