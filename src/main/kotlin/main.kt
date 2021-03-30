@@ -12,21 +12,47 @@ fun main() {
     contaFran.numero = 1001
     contaFran.saldo = 300.0
 
-
     println(contaHugo.tiular)
     println(contaHugo.numero)
     println(contaHugo.saldo)
 
-
     println(contaFran.tiular)
     println(contaFran.numero)
     println(contaFran.saldo)
+
+    println("Depositando na conta do Hugo.")
+    deposita(contaHugo, 50.0)
+    println(contaHugo.saldo)
+
+    println("Depositando na conta da Fran.")
+    deposita(contaFran, 70.0)
+    println(contaFran.saldo)
+}
+
+fun deposita(conta: Conta, valor:Double){
+    conta.saldo += valor
 }
 
 class Conta {
     var tiular = ""
     var numero = 0
     var saldo = 0.0
+}
+
+fun testaCopiasEReferencias() {
+    val numeroX = 10
+    var numeroY = numeroX
+    numeroY++
+    println("numerox $numeroX")
+    println("numeroy $numeroY")
+
+    val contaJoao = Conta()
+    contaJoao.tiular = "João"
+    var contaMaria = Conta()
+    contaMaria.tiular = "Maria"
+
+    println("Titular conta João: ${contaJoao.tiular}")
+    println("Titular conta Maria: ${contaMaria.tiular}")
 }
 
 
