@@ -1,57 +1,37 @@
 fun main() {
     println("Bem vindo ao Bytebank!")
 
-    val alex = Funcionario(
-        nome = "Alex",
-        cpf = "111.111.111-09",
-        salario = 1000.0,
-
-        )
-
-    println("nome ${alex.nome}")
-    println("cpf ${alex.cpf}")
-    println("salario ${alex.salario}")
-    println("bonificação ${alex.bonificacao}")
-
-    val fran = Gerente(
-        nome = "Fran",
-        cpf = "333.333.331-02",
-        salario = 2000.0,
-        senha = 1234
+    val contaCorrente = ContaCorrente(
+        "alex",
+        1000
     )
 
-    println("__________________")
-    println("nome ${fran.nome}")
-    println("cpf ${fran.cpf}")
-    println("salario ${fran.salario}")
-    println("bonificação ${fran.bonificacao}")
+    val contaPoupanca = ContaPoupanca(
+        "Fran",
+        1001
+    )
 
-    if (fran.autentica(1234)){
-        println("Autenticou com sucesso")
-    }else{
-        println("Falha na autenticação")
-    }
 
-    val gui = Diretor(
-        nome = "Gui",
-        cpf = "111.111.111-08",
-        salario = 1000.0,
-        senha=4000,
-        plr = 2000.0
-        )
+    contaCorrente.deposita(1000.0)
+    contaPoupanca.deposita(1000.0)
 
-    println("__________________")
-    println("nome ${gui.nome}")
-    println("cpf ${gui.cpf}")
-    println("salario ${gui.salario}")
-    println("bonificação ${gui.bonificacao}")
+    println("saldo corrente: ${contaCorrente.saldo}")
+    println("saldo Poupança: ${contaPoupanca.saldo}")
 
-    if (fran.autentica(4000)){
-        println("Autenticou com sucesso")
-    }else{
-        println("Falha na autenticação")
-    }
+    contaCorrente.saca(100.0)
+    contaPoupanca.saca(100.0)
+
+    println("saldo corrente pós saque: ${contaCorrente.saldo}")
+    println("saldo Poupança pós saque: ${contaPoupanca.saldo}")
+
+    println("saldo poupança: ${contaPoupanca.saldo}")
+    println("saldo Corrente: ${contaCorrente.saldo}")
+    contaCorrente.transfere(100.0, contaPoupanca)
+    println("saldo Corrente pós tranferir: ${contaCorrente.saldo}")
+
+    println("saldo poupança: ${contaPoupanca.saldo}")
 }
+
 
 
 
