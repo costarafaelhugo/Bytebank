@@ -9,6 +9,6 @@ class Auxiliar(
 ) {
 
     override val bonificacao: Double
-        get(){return  salario *.1
+        get(){return  salario *0.05
         }
 }
