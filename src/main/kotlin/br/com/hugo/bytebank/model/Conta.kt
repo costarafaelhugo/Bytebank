@@ -1,7 +1,7 @@
-package model
+package br.com.hugo.bytebank.model
 
 abstract class Conta(
-    var titular: String,
+    var titular:Cliente,
     val numero: Int
 ) {
 

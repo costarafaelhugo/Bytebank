@@ -1,6 +1,4 @@
-package model
-
-import model.Autenticavel
+package br.com.hugo.bytebank.model
 
 class SistemaInterno {
 

@@ -1,9 +1,7 @@
-package model
-
-import model.Autenticavel
+package br.com.hugo.bytebank.model
 
 class Cliente(
-    val nome: String,
+    var nome: String,
     val cpf: String,
     private val senha: Int
 ) : Autenticavel {

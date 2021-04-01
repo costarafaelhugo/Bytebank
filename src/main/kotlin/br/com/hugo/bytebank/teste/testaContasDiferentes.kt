@@ -1,20 +1,25 @@
+import br.com.hugo.bytebank.model.Cliente
 import br.com.hugo.bytebank.model.ContaCorrente
 import br.com.hugo.bytebank.model.ContaPoupanca
 
 fun testaContasDiferentes() {
     val contaCorrente = ContaCorrente(
-        "alex",
+        titular = Cliente(nome="Alex", cpf="000.111.222-8", senha=1),
         1000
     )
 
     val contaPoupanca = ContaPoupanca(
-        "Fran",
+        titular = Cliente(nome="Fran", cpf="456.454.454-98", senha=2),
         1001
     )
 
 
     contaCorrente.deposita(1000.0)
     contaPoupanca.deposita(1000.0)
+
+    println("titular")
+    println("nome do titular  ${contaCorrente.titular.nome}")
+    println("cpf do titular  ${contaCorrente.titular.cpf}")
 
     println("saldo corrente: ${contaCorrente.saldo}")
     println("saldo Poupança: ${contaPoupanca.saldo}")

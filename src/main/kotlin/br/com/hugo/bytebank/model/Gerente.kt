@@ -1,6 +1,4 @@
-package model
-
-import model.FuncionarioAdmin
+package br.com.hugo.bytebank.model
 
 class Gerente(
     nome: String,

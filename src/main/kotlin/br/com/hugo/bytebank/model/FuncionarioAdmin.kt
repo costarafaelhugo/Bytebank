@@ -1,7 +1,4 @@
-package model
-
-import model.Autenticavel
-import model.Funcionario
+package br.com.hugo.bytebank.model
 
 abstract class FuncionarioAdmin(
      nome: String,

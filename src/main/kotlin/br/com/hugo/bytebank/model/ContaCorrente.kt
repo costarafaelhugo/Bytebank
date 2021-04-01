@@ -1,9 +1,7 @@
-package model
-
-import model.Conta
+package br.com.hugo.bytebank.model
 
 class ContaCorrente(
-    titular: String,
+    titular: Cliente,
     numero: Int
 ) : Conta(
     titular,

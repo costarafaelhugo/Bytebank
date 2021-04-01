@@ -1,6 +1,4 @@
-package model
-
-import model.Funcionario
+package br.com.hugo.bytebank.model
 
 class Auxiliar(
     nome: String,

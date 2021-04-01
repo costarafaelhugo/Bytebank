@@ -1,12 +1,16 @@
+import br.com.hugo.bytebank.model.Cliente
 import br.com.hugo.bytebank.model.ContaCorrente
 import br.com.hugo.bytebank.model.ContaPoupanca
 
 fun testaComportamentosConta() {
-    val contaHugo = ContaCorrente("Hugo", 1000)
+
+    val alex = Cliente(nome = "Alex", cpf="", senha=1)
+    val contaHugo = ContaCorrente(alex, 1000)
     contaHugo.deposita(200.00)
 
 
-    val contaFran = ContaPoupanca("Fran", 1001)
+    val fran = Cliente(nome="Fran", cpf="", senha=2)
+    val contaFran = ContaPoupanca(fran, 1001)
     contaFran.deposita(300.0)
 
     println(contaHugo.titular)

@@ -1,6 +1,4 @@
-package model
-
-import model.Funcionario
+package br.com.hugo.bytebank.model
 
 class CalculadoraBonificacao {
 
@@ -12,10 +10,10 @@ class CalculadoraBonificacao {
         this.total += funcionario.bonificacao
     }
 
-//    fun resgistra(gerente: model.Gerente){
+//    fun resgistra(gerente: br.com.hugo.bytebank.model.Gerente){
 //        this.total += gerente.bonificacao
 //    }
-//    fun resgistra(diretor: model.Diretor){
+//    fun resgistra(diretor: br.com.hugo.bytebank.model.Diretor){
 //        this.total += diretor.bonificacao
 //    }
 }
