@@ -27,4 +27,6 @@ fun testaAutenticacao() {
     sistema.entra(diretor, senha = 2000)
     sistema.entra(cliente, senha = 1234)
 
+
+
 }
