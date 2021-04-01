@@ -1,5 +1,5 @@
-import model.ContaCorrente
-import model.ContaPoupanca
+import br.com.hugo.bytebank.model.ContaCorrente
+import br.com.hugo.bytebank.model.ContaPoupanca
 
 fun testaContasDiferentes() {
     val contaCorrente = ContaCorrente(
