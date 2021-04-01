@@ -1,3 +1,5 @@
+import model.ContaCorrente
+import model.ContaPoupanca
 
 fun testaContasDiferentes() {
     val contaCorrente = ContaCorrente(

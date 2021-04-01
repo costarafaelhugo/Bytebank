@@ -1,3 +1,7 @@
+import model.Analista
+import model.CalculadoraBonificacao
+import model.Diretor
+import model.Gerente
 
 fun testaFuncionarios() {
     val alex = Analista(

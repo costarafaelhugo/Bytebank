@@ -1,14 +1,19 @@
+package model
+
+import model.Autenticavel
+import model.Funcionario
+
 abstract class FuncionarioAdmin(
      nome: String,
      cpf: String,
      salario: Double,
     protected val senha: Int
 
-    ):Funcionario(
+    ): Funcionario(
     nome = nome,
     cpf = cpf,
     salario = salario
-),Autenticavel{
+), Autenticavel {
 
  override fun autentica (senha: Int) : Boolean{
 
