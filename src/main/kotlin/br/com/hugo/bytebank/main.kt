@@ -1,36 +1,26 @@
-import br.com.hugo.bytebank.model.Cliente
-import br.com.hugo.bytebank.model.Conta
-import br.com.hugo.bytebank.model.ContaPoupanca
-import br.com.hugo.bytebank.model.SistemaInterno
-
-
-
-
+import br.com.hugo.bytebank.model.Endereco
+import br.com.hugo.bytebank.teste.testaAny
 
 fun main() {
-
-    val fran = object {
-        val nome:String="Fran"
-        val cpf:String="111.111.111-89"
-        val senha:Int=100
-
-        fun autentica(senha:Int)=this.senha==senha
-    }
-
-
-
-
-    val alex = Cliente(nome = "Alex", cpf = "", senha = 1)
-    val contaPoupanca = ContaPoupanca(titular = alex, numero = 1000)
-    val contaCorrente = ContaPoupanca(titular = alex, numero = 1001)
-
-
-
-
-    testaContasDiferentes()
-
-    println("Total de contas: ${Conta.total}")
+    println("inicio main")
+    funcao1()
+    println("fim main")
 }
+
+fun funcao1() {
+    println("inicio funcao1")
+    funcao2()
+    println("fim funcao1")
+}
+
+fun funcao2(){
+    println("inicio funcao2")
+    for(i in 1..5){
+        println(i)
+    }
+    println("fim funcao2")
+}
+
 
 
 
