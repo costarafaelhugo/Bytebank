@@ -1,3 +1,4 @@
+import br.com.hugo.bytebank.exceptions.FalhaAutenticacaoException
 import br.com.hugo.bytebank.exceptions.SaldoInsuficienteException
 import br.com.hugo.bytebank.model.Cliente
 import br.com.hugo.bytebank.model.ContaCorrente
@@ -48,11 +49,19 @@ fun testaComportamentosConta() {
 
     println("Transferência da conta da Fran para a conta do Hugo.")
 try {
-    contaFran.transfere(destino = contaHugo, valor = 250.0)
+    contaFran.transfere(destino = contaHugo, valor = 250.0,senha = 2)
     println("Transferência sucedida")
-}catch (e:SaldoInsuficienteException){
+}catch (e: Exception){
+    println("Erro desconhecido")
+    e.printStackTrace()
+}
+catch (e:SaldoInsuficienteException) {
     println("Falha na transferência")
     println("Saldo insuficiente")
+    e.printStackTrace()
+}catch (e:FalhaAutenticacaoException){
+    println("Falha na transferência")
+    println("Falha na autenticação")
     e.printStackTrace()
 }
     println(contaHugo.saldo)

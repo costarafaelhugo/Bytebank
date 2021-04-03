@@ -1,12 +1,13 @@
 package br.com.hugo.bytebank.model
 
+import br.com.hugo.bytebank.exceptions.FalhaAutenticacaoException
 import br.com.hugo.bytebank.exceptions.SaldoInsuficienteException
 
 
 abstract class Conta(
     var titular: Cliente,
     val numero: Int
-) {
+) : Autenticavel {
 
 
     var saldo = 0.0
@@ -23,21 +24,31 @@ abstract class Conta(
     }
 
 
+    override fun autentica(senha: Int): Boolean {
+        return titular.autentica(senha)
+    }
+
     fun deposita(valor: Double) {
         this.saldo += valor
     }
 
     abstract fun saca(valor: Double)
 
-    fun transfere(valor: Double, destino: Conta) {
-        if (saldo < valor){
-            throw SaldoInsuficienteException()
+    fun transfere(valor: Double, destino: Conta, senha: Int) {
+        if (saldo < valor) {
+            throw SaldoInsuficienteException(
+                mensagem = "O saldo é insuficiente, saldo atual: $saldo, valor a ser subtraído = $valor"
+            )
         }
-            saldo -= valor
-            destino.deposita(valor)
+        if (!autentica(senha)) {
+            throw FalhaAutenticacaoException()
         }
 
+        saldo -= valor
+        destino.deposita(valor)
     }
+
+}
 
 class ContaCorrente(
     titular: Cliente,
