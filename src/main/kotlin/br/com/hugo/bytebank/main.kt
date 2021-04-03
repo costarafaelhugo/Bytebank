@@ -1,13 +1,31 @@
 import br.com.hugo.bytebank.model.Endereco
 import java.lang.ClassCastException
+import java.lang.NumberFormatException
 
 fun main() {
     println("inicio main")
-//    try {
-//        10 / 0
-//    } catch (e: ArithmeticException) {
-//        println("ArithmeticException foi pegada")
-//    }
+    val entrada: String = "1.0"
+
+    var valorRecebido: Double? = try {
+        entrada.toDouble()
+    } catch (e: NumberFormatException) {
+        println("Problema na conversão")
+        e.printStackTrace()
+        null
+    }
+
+    val valorComTaxa: Double? = if (valorRecebido != null) {
+        valorRecebido + 0.1
+    } else {
+        null
+    }
+
+
+    if (valorComTaxa != null) {
+        println("Valor recebido: $valorRecebido")
+    } else {
+        println("valor inválido")
+    }
     funcao1()
     println("fim main")
 }
@@ -29,7 +47,7 @@ fun funcao2() {
 
         }
 
-    }catch (e:ClassCastException){
+    } catch (e: ClassCastException) {
         e.printStackTrace()
         println("ClassCastException foi pegado")
     }
