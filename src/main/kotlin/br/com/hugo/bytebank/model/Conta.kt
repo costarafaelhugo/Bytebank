@@ -1,18 +1,20 @@
 package br.com.hugo.bytebank.model
 
+import br.com.hugo.bytebank.exceptions.SaldoInsuficienteException
 
 
 abstract class Conta(
-    var titular:Cliente,
+    var titular: Cliente,
     val numero: Int
 ) {
 
 
     var saldo = 0.0
         protected set
+
     companion object {
         var total = 0
-        private set
+            private set
     }
 
     init {
@@ -21,23 +23,21 @@ abstract class Conta(
     }
 
 
-   fun deposita(valor: Double) {
+    fun deposita(valor: Double) {
         this.saldo += valor
     }
 
     abstract fun saca(valor: Double)
 
-    fun transfere(valor: Double, destino: Conta): Boolean {
-        if (saldo >= valor) {
+    fun transfere(valor: Double, destino: Conta) {
+        if (saldo < valor){
+            throw SaldoInsuficienteException()
+        }
             saldo -= valor
             destino.deposita(valor)
-            return true
         }
-        return false
+
     }
-
-
-}
 
 class ContaCorrente(
     titular: Cliente,
@@ -45,12 +45,12 @@ class ContaCorrente(
 ) : Conta(
     titular,
     numero
-){
+) {
 
     override fun saca(valor: Double) {
-        val valorComTaxa = valor+0.1
-        if (this.saldo>=valorComTaxa){
-            this.saldo-=valorComTaxa
+        val valorComTaxa = valor + 0.1
+        if (this.saldo >= valorComTaxa) {
+            this.saldo -= valorComTaxa
         }
     }
 }
@@ -61,12 +61,11 @@ class ContaPoupanca(
 ) : Conta(
     titular,
     numero
-){
-
+) {
 
     override fun saca(valor: Double) {
-        if (this.saldo>=valor){
-            this.saldo-=valor
+        if (this.saldo >= valor) {
+            this.saldo -= valor
         }
     }
 }
