@@ -3,11 +3,11 @@ import java.lang.ClassCastException
 
 fun main() {
     println("inicio main")
-    try {
-        10 / 0
-    } catch (e: ArithmeticException) {
-        println("ArithmeticException foi pegada")
-    }
+//    try {
+//        10 / 0
+//    } catch (e: ArithmeticException) {
+//        println("ArithmeticException foi pegada")
+//    }
     funcao1()
     println("fim main")
 }
@@ -30,6 +30,7 @@ fun funcao2() {
         }
 
     }catch (e:ClassCastException){
+        e.printStackTrace()
         println("ClassCastException foi pegado")
     }
     println("fim funcao2")
