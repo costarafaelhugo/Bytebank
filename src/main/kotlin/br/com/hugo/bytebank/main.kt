@@ -1,8 +1,13 @@
 import br.com.hugo.bytebank.model.Endereco
-import br.com.hugo.bytebank.teste.testaAny
+import java.lang.ClassCastException
 
 fun main() {
     println("inicio main")
+    try {
+        10 / 0
+    } catch (e: ArithmeticException) {
+        println("ArithmeticException foi pegada")
+    }
     funcao1()
     println("fim main")
 }
@@ -13,10 +18,19 @@ fun funcao1() {
     println("fim funcao1")
 }
 
-fun funcao2(){
+fun funcao2() {
     println("inicio funcao2")
-    for(i in 1..5){
-        println(i)
+    try {
+        for (i in 1..5) {
+            println(i)
+            val endereco = Any()
+
+            endereco as Endereco
+
+        }
+
+    }catch (e:ClassCastException){
+        println("ClassCastException foi pegado")
     }
     println("fim funcao2")
 }
