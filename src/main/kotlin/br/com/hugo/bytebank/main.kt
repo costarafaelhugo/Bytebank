@@ -1,37 +1,18 @@
-import br.com.hugo.bytebank.exceptions.SaldoInsuficienteException
+import br.com.hugo.bytebank.model.Endereco
+import java.lang.IllegalStateException
+import kotlin.math.log
 
 fun main() {
-    println("inicio main")
-   testaComportamentosConta()
-    println("fim main")
-}
-
-fun teste(){
-    return teste()
-}
-
-
-fun funcao1() {
-    println("inicio funcao1")
-    try {
-        funcao2()
-
-    }catch (e:SaldoInsuficienteException){
-        println("SaldoInsuficienteException foi pego")
+    var enderecoNulo: Endereco? = Endereco(logradouro = "rua vergueiro", complemento = "pŕedio")
+    val lograddouroNovo: String? = enderecoNulo?.logradouro
+    enderecoNulo?.let {
+        println(it.logradouro.length)
+        val tamanhaComprlemento: Int = it.complemento?.length ?: throw IllegalStateException("complemento deve existir")
+        println(tamanhaComprlemento)
     }
-
-    println("fim funcao1")
 }
 
-fun funcao2() {
-    println("inicio funcao2")
 
-        for (i in 1..5) {
-            println(i)
-            throw  SaldoInsuficienteException()
-        }
-    println("fim funcao2")
-}
 
 
 
